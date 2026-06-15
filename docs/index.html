@@ -98,7 +98,7 @@
         <h1>Team &mdash; Fireflies Dashboard</h1>
         <p class="subtitle">Team meeting analytics &amp; usage overview</p>
     </div>
-    <p class="timestamp">Last updated: 2026-06-01 09:05:36</p>
+    <p class="timestamp">Last updated: 2026-06-15 09:05:03</p>
 
     <div class="charts">
         <div class="chart-card">
@@ -130,33 +130,33 @@
         const DATA = [
   {
     "name": "Yuri",
-    "meetings_organized_all_time": 177,
-    "meetings_organized_last_60": 59,
-    "meetings_organized_last_30": 10
+    "meetings_organized_all_time": 178,
+    "meetings_organized_last_60": 38,
+    "meetings_organized_last_30": 6
+  },
+  {
+    "name": "Kyle",
+    "meetings_organized_all_time": 54,
+    "meetings_organized_last_60": 46,
+    "meetings_organized_last_30": 36
   },
   {
     "name": "Kurt",
     "meetings_organized_all_time": 37,
-    "meetings_organized_last_60": 19,
-    "meetings_organized_last_30": 5
+    "meetings_organized_last_60": 12,
+    "meetings_organized_last_30": 1
   },
   {
     "name": "Callie",
-    "meetings_organized_all_time": 28,
-    "meetings_organized_last_60": 13,
-    "meetings_organized_last_30": 8
-  },
-  {
-    "name": "Kyle",
-    "meetings_organized_all_time": 23,
+    "meetings_organized_all_time": 33,
     "meetings_organized_last_60": 17,
-    "meetings_organized_last_30": 13
+    "meetings_organized_last_30": 6
   },
   {
     "name": "Bao",
     "meetings_organized_all_time": 20,
-    "meetings_organized_last_60": 14,
-    "meetings_organized_last_30": 5
+    "meetings_organized_last_60": 6,
+    "meetings_organized_last_30": 1
   },
   {
     "name": "Aras",
@@ -199,11 +199,23 @@
     "meetings_organized_all_time": 0,
     "meetings_organized_last_60": 0,
     "meetings_organized_last_30": 0
+  },
+  {
+    "name": "Brigitte",
+    "meetings_organized_all_time": 0,
+    "meetings_organized_last_60": 0,
+    "meetings_organized_last_30": 0
+  },
+  {
+    "name": "Hugh",
+    "meetings_organized_all_time": 0,
+    "meetings_organized_last_60": 0,
+    "meetings_organized_last_30": 0
   }
 ];
-        const names = ["Yuri", "Kurt", "Callie", "Kyle", "Bao", "Aras", "Ashwini", "Rhett", "Traci", "Richard", "Gretchen", "Clarence"];
-        const allTime = [177, 37, 28, 23, 20, 5, 4, 1, 1, 0, 0, 0];
-        const last30 = [10, 5, 8, 13, 5, 0, 0, 0, 0, 0, 0, 0];
+        const names = ["Yuri", "Kyle", "Kurt", "Callie", "Bao", "Aras", "Ashwini", "Rhett", "Traci", "Richard", "Gretchen", "Clarence", "Brigitte", "Hugh"];
+        const allTime = [178, 54, 37, 33, 20, 5, 4, 1, 1, 0, 0, 0, 0, 0];
+        const last30 = [6, 36, 1, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
         // Populate table
         const tbody = document.getElementById('tableBody');
