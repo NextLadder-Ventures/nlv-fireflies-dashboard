@@ -2,7 +2,7 @@
 
 A static analytics dashboard that tracks how the team uses [Fireflies.ai](https://fireflies.ai) — meetings organized per person, across all time, last 60 days, and last 30 days. The dashboard is published automatically to GitHub Pages.
 
-**Live dashboard:** https://yurikim-nlv.github.io/nlv-fireflies-dashboard/
+**Live dashboard:** https://nextladder-ventures.github.io/nlv-fireflies-dashboard/
 
 ---
 

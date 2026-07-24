@@ -34,7 +34,7 @@ def graphql_request(query, variables=None):
     payload = {"query": query}
     if variables:
         payload["variables"] = variables
-    resp = requests.post(API_URL, headers=HEADERS, json=payload, timeout=30)
+    resp = requests.post(API_URL, headers=HEADERS, json=payload, timeout=90)
     resp.raise_for_status()
     data = resp.json()
     if "errors" in data:
@@ -92,6 +92,8 @@ def compute_dashboard_data(users, transcripts):
     now = datetime.now(timezone.utc)
     thirty_days_ago = now - timedelta(days=30)
     thirty_days_ago_ms = int(thirty_days_ago.timestamp() * 1000)
+    sixty_days_ago = now - timedelta(days=60)
+    sixty_days_ago_ms = int(sixty_days_ago.timestamp() * 1000)
 
     # Build user lookup from the API-returned users (paying seats only)
     user_emails = set()
@@ -102,6 +104,7 @@ def compute_dashboard_data(users, transcripts):
         user_map[email] = {
             "name": (u.get("name") or email.split("@")[0]).split()[0],
             "meetings_organized_all_time": 0,
+            "meetings_organized_last_60": 0,
             "meetings_organized_last_30": 0,
         }
 
@@ -115,6 +118,8 @@ def compute_dashboard_data(users, transcripts):
 
         # date is a Unix timestamp in milliseconds
         date_ms = t.get("date")
+        if date_ms and date_ms >= sixty_days_ago_ms:
+            user_map[organizer]["meetings_organized_last_60"] += 1
         if date_ms and date_ms >= thirty_days_ago_ms:
             user_map[organizer]["meetings_organized_last_30"] += 1
 
@@ -259,6 +264,7 @@ def render_html(dashboard_data):
                 <tr>
                     <th>Name</th>
                     <th class="num">Meetings (Last 30 Days)</th>
+                    <th class="num">Meetings (Last 60 Days)</th>
                     <th class="num">Meetings (All Time)</th>
                 </tr>
             </thead>
@@ -282,6 +288,7 @@ def render_html(dashboard_data):
             row.innerHTML = `
                 <td>${d.name}</td>
                 <td class="num">${d.meetings_organized_last_30.toLocaleString()}</td>
+                <td class="num">${d.meetings_organized_last_60.toLocaleString()}</td>
                 <td class="num">${d.meetings_organized_all_time.toLocaleString()}</td>
             `;
             tbody.appendChild(row);
